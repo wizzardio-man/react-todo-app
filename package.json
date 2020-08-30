@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install:server": "npm i",
+    "install:client": "cd ./client && npm i",
+    "install:app": "concurrently \"npm run install:server\" \"npm run install:client\"",
     "server": "nodemon index.js",
     "client": "cd ./client && npm run start",
     "app": "concurrently \"npm run server\" \"npm run client\""

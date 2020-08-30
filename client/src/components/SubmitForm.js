@@ -11,7 +11,7 @@ export default function SubmitForm(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <input 
         type='text'
         name='term'
@@ -20,7 +20,7 @@ export default function SubmitForm(props) {
         value={term}
         onChange={(e) => {setTerm(e.target.value)}}
       />
-      <button className='button'>Submit</button>
+      <button className='button' onClick={handleSubmit}>Submit</button>
     </form>
   );
 }

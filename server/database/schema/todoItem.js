@@ -12,6 +12,14 @@ const TodoItemSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    isDone: {
+        type: Boolean,
+        required: true
+    },
+    isDeleted: {
+        type: Boolean,
+        required: true
+    },
     todoList: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'TodoList' 

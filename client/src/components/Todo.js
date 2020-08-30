@@ -5,7 +5,7 @@ const Todo = (props) => {
       <div className='list-item'>
         {props.content.title}
         {
-          props.content.isActive === 1 ? (
+          props.content.isDone === false ? (
             <button className="done is-pulled-right" 
               onClick={() => {props.onDone(props.id)}} />
           ) : (

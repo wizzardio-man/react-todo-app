@@ -6,22 +6,45 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 const { models } = require('../database/index');
+const { route } = require('./todoList');
 const { TodoItem, TodoList } = models;
 
 router.post('/todoitem', async (req, res) => {
-    const { title, listId } = req.body;
-    console.log(`Gonna create new item ${title} inside list with an id ${listId}`);
+    const { title, listId, isDone, isDeleted } = req.body;
+    const _id = new mongoose.Types.ObjectId().toHexString();
     const newTodoItem = new TodoItem({
-        title: title,
-        _id: new mongoose.Types.ObjectId().toHexString(),
-        todoList: listId
+        title,
+        _id,
+        todoList: listId,
+        isDone,
+        isDeleted
     });
 
     try {
         await newTodoItem.save();
-        res.send({ msg: `Create new item ${title} inside list ${listId}`});
+        const item = await TodoItem.find({ _id }).exec();
+        res.send( item );
     } catch (err) {
         console.log(err);
+        res.status(500).send({ err: JSON.stringify(err) });
+    }
+});
+
+router.get('/todoitem', async (req, res) => {
+    try {
+        const todoItems = await TodoItem.find({}).exec();
+        res.send(todoItems);
+    } catch(err) {
+        res.status(500).send({ err: JSON.stringify(err) });
+    }
+});
+
+router.delete('/todoitem/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await TodoItem.findByIdAndDelete(id);
+        res.send({ msg: `Todo Item with an id ${id} was deleted` });
+    } catch (err) {
         res.status(500).send({ err: JSON.stringify(err) });
     }
 });

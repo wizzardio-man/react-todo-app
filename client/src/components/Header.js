@@ -4,7 +4,7 @@ const Header = (props) => {
     return (
       <div className='card-header'>
         <h1 className='card-header-title header'>
-          You have {props.numTodos} items
+          {props.msg}
         </h1>
       </div>
     );
