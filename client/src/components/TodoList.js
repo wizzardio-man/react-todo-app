@@ -4,7 +4,13 @@ import Todo from './Todo';
 
 const TodoList = (props) => {
     const todos = props.items.map((todo, index) => {
-      return <Todo content={todo} key={index} id={todo._id} onDelete={props.onDelete} onDone={props.onDone} />
+      return <Todo 
+          content={todo} 
+          key={index} 
+          id={todo._id} 
+          onDelete={props.onDelete} 
+          onDone={props.onDone} 
+        />
     });
 
     return( 

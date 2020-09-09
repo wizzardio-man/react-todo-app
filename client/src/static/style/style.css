@@ -81,3 +81,6 @@ form {
     display: block;
     padding: .5em 1em;
 }
+.list-item-crossed {
+    text-decoration: line-through;
+}

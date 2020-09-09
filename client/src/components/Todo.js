@@ -2,8 +2,8 @@ import React from 'react';
 
 const Todo = (props) => {
     return(
-      <div className='list-item'>
-        {props.content.title}
+      <div className={"list-item " + (props.content.isDone && 'list-item-crossed')}>
+        { props.content.title }
         { !props.content.isDone && (
           <button
             className="done is-pulled-right"

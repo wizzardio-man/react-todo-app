@@ -9,7 +9,6 @@ const { models } = require('../database/index');
 const { route } = require('./todoList');
 const { TodoItem, TodoList } = models;
 
-// split and create separate GET by ID route
 router.post('/todoitem', async (req, res) => {
     const { title, listId, isDone, isDeleted } = req.body;
     const _id = new mongoose.Types.ObjectId().toHexString();
@@ -23,8 +22,7 @@ router.post('/todoitem', async (req, res) => {
 
     try {
         await newTodoItem.save();
-        const item = await TodoItem.find({ _id }).exec();
-        res.send( item );
+        res.send({ msg: `Created new item with a title ${title} for the list ${listId}` });
     } catch (err) {
         console.log(err);
         res.status(500).send({ err: JSON.stringify(err) });
