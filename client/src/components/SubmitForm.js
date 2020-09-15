@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-export default function SubmitForm(props) {
+import { addItem } from '../middleware/actions/itemsActions';
+
+const SubmitForm = (props) => {
   const [ term, setTerm ] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(term === '') return;
-    props.onFormSubmit(term);
+    props.addItem(term);
     setTerm('');
   }
 
@@ -23,3 +26,9 @@ export default function SubmitForm(props) {
     </div>
   );
 }
+
+const mapDispatchToProps = {
+  addItem
+};
+
+export default connect(() => {}, mapDispatchToProps)(SubmitForm);

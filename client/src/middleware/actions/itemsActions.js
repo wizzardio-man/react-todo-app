@@ -1,4 +1,9 @@
-import axios from 'axios';
+import { 
+    getServerItems, 
+    deleteServerItem,
+    doneServerItem,
+    addServerItem
+} from '../server/server';
 
 export const GET_ITEMS = 'GET_ITEMS';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
@@ -14,14 +19,10 @@ export const getItemsSuccess = items => ({
 
 export const getItemsFailure = () => ({ type: GET_ITEMS_FAILURE });
 
-/**
- * Move axios calls to another file/functions...
- */
-
 export function fetchItems() {
     return function action(dispatch) {
         dispatch(getItems());
-        axios.get('http://localhost:5000/server/todoitem')
+        getServerItems()
             .then(
                 response => dispatch(getItemsSuccess(response)),
                 err => dispatch(getItemsFailure())
@@ -31,7 +32,7 @@ export function fetchItems() {
 
 export function deleteItem(id) {
     return function action(dispatch) {
-        axios.delete(`http://localhost:5000/server/todoitem/${id}`)
+        deleteServerItem(id)
             .then(() => {
                 fetchItems()(dispatch);
             });
@@ -40,7 +41,7 @@ export function deleteItem(id) {
 
 export function doneItem(id) {
     return function action(dispatch) {
-        axios.put(`http://localhost:5000/server/todoitem/${id}`, { isDone: true })
+        doneServerItem(id)
             .then(() => {
                 fetchItems()(dispatch);
             });
@@ -49,10 +50,9 @@ export function doneItem(id) {
 
 export function addItem(task) {
     return function action(dispatch) {
-        axios.post('http://localhost:5000/server/todoitem',
-            { title: task, isDone: false, isDeleted: false })
-                .then(() => {
-                    fetchItems()(dispatch);
-                });
+        addServerItem(task)
+            .then(() => {
+                fetchItems()(dispatch);
+            });
     }
 }

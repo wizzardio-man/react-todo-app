@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-// use onDelete and onDone from redux instead of tree components
-// create separate component for svg
+import { deleteItem, doneItem } from '../middleware/actions/itemsActions';
+
 const Todo = (props) => {
     return (
       <li className='ui-state-default'>
@@ -9,13 +10,13 @@ const Todo = (props) => {
           <label className='form-check-label'>
               <label>
               { !props.content.isDone && (
-                <input type="checkbox" value="" onClick={() => {props.onDone(props.id)}} />
+                <input type="checkbox" value="" onClick={() => {props.doneItem(props.id)}} />
               )}
                <p className={(props.content.isDone && 'completed')}>{props.content.title}</p>
               </label>
             <button 
               className='remove-item btn btn-default btn-xs right'
-              onClick={() => {props.onDelete(props.id)}}>
+              onClick={() => {props.deleteItem(props.id)}}>
                 <span className='glyphicon glyphicon-remove'></span>
             </button>
           </label>
@@ -24,4 +25,9 @@ const Todo = (props) => {
     );
 }
 
-export default Todo;
+const mapDispatchToProps = {
+  deleteItem,
+  doneItem
+};
+
+export default connect(() => {}, mapDispatchToProps)(Todo);
