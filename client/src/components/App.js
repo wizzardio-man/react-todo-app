@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchItems, deleteItem, doneItem, addItem } from '../middleware/actions/itemsActions';
+import { fetchItems,
+    deleteItem,
+    doneItem,
+    addItem } from '../middleware/actions/itemsActions';
 
 import TodoList from './TodoList';
 import Header from './Header';
 import SubmitForm from './SubmitForm';
 
+// TODO:
+// modify dispatch to mapDispatchToProps
 const App = ({ dispatch, loading, items, hasErrors }) => {
     useEffect(() => {
         dispatch(fetchItems())
@@ -33,12 +38,14 @@ const App = ({ dispatch, loading, items, hasErrors }) => {
     };
 
     return (
-        <div className="wrapper">
-            <div className="card frame">
-                {renderItems()}
-                <SubmitForm onFormSubmit={(item) => {
-                    dispatch(addItem(item))
-                }} />
+        <div className='container'>
+            <div className="row">
+                <div className="col-md-6">
+                    <div className='todolist'>
+                        <SubmitForm onFormSubmit={(item) => {dispatch(addItem(item))}} />
+                        {renderItems()}
+                    </div>
+                </div>
             </div>
         </div>
     )

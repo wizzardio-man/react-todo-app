@@ -1,86 +1,51 @@
-form {
-    display: flex;
-    padding: 10px;
+body{
+    background-color:#EEEEEE;
 }
-.wrapper {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"%3E%3Cpath fill="%239C92AC" fill-opacity="0.4" d="M1 3h1v1H1V3zm2-2h1v1H3V1z"%3E%3C/path%3E%3C/svg%3E');
+.todolist{
+    background-color:#FFF;
+    padding:20px 20px 10px 20px;
+    margin-top:30px;
 }
-.input {
-    margin-right: 10px;
+.todolist h1{
+    margin:0;
+    padding-bottom:20px;
+    text-align:center;
 }
-.frame {
-    width: 40vw;
-    max-width: 400px;
+.form-control{
+    border-radius:0;
 }
-.header {
-    display: inline;
-    text-align: center;
+li.ui-state-default{
+    background:#fff;
+    border:none;
+    border-bottom:1px solid #ddd;
 }
-.list-wrapper {
-    max-height: 200px;
-    overflow-y: auto;
+
+li.ui-state-default:last-child{
+    border-bottom:none;
 }
-.delete {
-    background-color: rgba(10,10,10,.2);
-    border: none;
-    border-radius: 290486px;
-    cursor: pointer;
-    pointer-events: auto;
-    display: inline-block;
-    flex-grow: 0;
-    flex-shrink: 0;
-    font-size: 0;
-    height: 20px;
-    max-height: 20px;
-    max-width: 20px;
-    min-height: 20px;
-    min-width: 20px;
-    outline: 0;
-    position: relative;
-    vertical-align: top;
-    width: 20px;
+
+.todo-footer{
+    background-color:#F4FCE8;
+    margin:0 -20px -10px -20px;
+    padding: 10px 20px;
 }
-.done {
-    background-color: grey;
-    border: none;
-    border-radius: 290486px;
-    cursor: pointer;
-    pointer-events: auto;
-    display: inline-block;
-    flex-grow: 0;
-    flex-shrink: 0;
-    font-size: 0;
-    height: 20px;
-    max-height: 20px;
-    max-width: 20px;
-    min-height: 20px;
-    min-width: 20px;
-    outline: 0;
-    position: relative;
-    vertical-align: top;
-    width: 20px;
+#done-items li{
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
+    text-decoration:line-through;
 }
-.is-pulled-right {
-    float: right !important;
+#done-items li:last-child{
+    border-bottom:none;
 }
-.list-item:not(:last-child) {
-    border-bottom: 1px solid #dbdbdb;
+#checkAll{
+    margin-top:10px;
 }
-.list-item:first-child {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-}
-.list-item:not(a) {
-    color: #4a4a4a;
-}
-.list-item {
-    display: block;
-    padding: .5em 1em;
-}
-.list-item-crossed {
+
+.completed {
     text-decoration: line-through;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
 }

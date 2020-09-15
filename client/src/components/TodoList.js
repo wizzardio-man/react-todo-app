@@ -14,9 +14,9 @@ const TodoList = (props) => {
     });
 
     return( 
-      <div className='list-wrapper'>
+      <ul className='list-unstyled' id='sortable'>
         {todos}
-      </div>
+      </ul>
     );
 }
 

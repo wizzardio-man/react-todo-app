@@ -15,6 +15,6 @@ export default function itemsReducer(state = initialState, action) {
     case actions.GET_ITEMS_FAILURE:
       return { ...state, loading: false, hasErrors: true };
     default:
-      return state
+      return state;
   }
 }

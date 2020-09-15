@@ -11,16 +11,15 @@ export default function SubmitForm(props) {
   }
 
   return (
-    <form>
-      <input 
-        type='text'
-        name='term'
-        className='input'
-        placeholder='Enter Item'
-        value={term}
-        onChange={(e) => {setTerm(e.target.value)}}
-      />
-      <button className='button' onClick={handleSubmit}>Submit</button>
-    </form>
+    <div>
+        <input 
+          type='text'
+          className='form-control add-todo'
+          placeholder='Add new item' 
+          value={term}
+          onChange={(e) => {setTerm(e.target.value)}}
+        />
+        <button className='btn btn-success' id='checkAll' onClick={handleSubmit}>Add</button>
+    </div>
   );
 }

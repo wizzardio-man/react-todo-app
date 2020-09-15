@@ -14,6 +14,10 @@ export const getItemsSuccess = items => ({
 
 export const getItemsFailure = () => ({ type: GET_ITEMS_FAILURE });
 
+/**
+ * Move axios calls to another file/functions...
+ */
+
 export function fetchItems() {
     return function action(dispatch) {
         dispatch(getItems());

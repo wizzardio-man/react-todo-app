@@ -4,6 +4,6 @@ import itemsReducer from './itemsReducer';
 
 const rootReducer = combineReducers({
     items: itemsReducer
-})
+});
 
-export default rootReducer
+export default rootReducer;

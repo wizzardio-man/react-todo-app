@@ -2,11 +2,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const Header = props => (
-  <div className='card-header'>
-    <h1 className='card-header-title header'>
-      {props.msg}
-    </h1>
-  </div>
+  <h1 className='card-title'>
+    {props.msg}
+  </h1>
 );
 
 Header.protoTypes = {
