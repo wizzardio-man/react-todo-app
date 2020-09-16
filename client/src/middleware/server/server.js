@@ -15,6 +15,5 @@ export function doneServerItem(id) {
 }
 
 export function addServerItem(title) {
-    return axios.post('http://localhost:5000/server/todoitem',
-        { title, isDone: false, isDeleted: false });
+    return axios.post(SERVER_URI, { title, isDone: false, isDeleted: false });
 }

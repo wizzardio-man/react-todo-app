@@ -30,4 +30,4 @@ const mapDispatchToProps = {
   doneItem
 };
 
-export default connect(() => {}, mapDispatchToProps)(Todo);
+export default connect(null, mapDispatchToProps)(Todo);

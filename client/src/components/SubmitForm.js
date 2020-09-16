@@ -31,4 +31,4 @@ const mapDispatchToProps = {
   addItem
 };
 
-export default connect(() => {}, mapDispatchToProps)(SubmitForm);
+export default connect(null, mapDispatchToProps)(SubmitForm);
