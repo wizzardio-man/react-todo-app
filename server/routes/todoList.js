@@ -29,7 +29,6 @@ router.get('/todolist/:id', async (req, res) => {
 
     try {
         const todoList = await TodoList.findOne({ _id: id }).exec();
-        console.log(todoList);
         res.send({ todoList });
     } catch(err) {
         console.log(err);
@@ -49,7 +48,6 @@ router.get('/todolist', async (req, res) => {
 
 router.delete('/todolist/:id', async (req, res) => {
     const { id } = req.params;
-    console.log(`Received GET call to get Todolist with an ID ${id}`);
 
     try {
         await TodoList.deleteOne({ _id: id }).exec();
