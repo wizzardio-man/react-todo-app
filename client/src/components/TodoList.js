@@ -6,10 +6,10 @@ import Header from './Header';
 
 import Todo from './Todo';
 
-const TodoList = ({ dispatch, loading, items, hasErrors }) => {
+const TodoList = ({ fetchItems, loading, items, hasErrors }) => {
     useEffect(() => {
-      dispatch(fetchItems())
-    }, [dispatch]);
+      fetchItems()
+    }, []);
 
     const renderItems = () => {
       if (loading) return <p>Loading items...</p>
@@ -47,4 +47,8 @@ const mapStateToProps = state => ({
   hasErrors: state.items.hasErrors,
 });
 
-export default connect(mapStateToProps)(TodoList);
+const mapDispatchToProps = {
+  fetchItems
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
