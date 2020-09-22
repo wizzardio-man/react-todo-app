@@ -12,8 +12,15 @@ import TodoListApp from './components/TodoListApp';
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-      <Route exact path='/' component={App} />
-      <Route path='/list/:listId' component={TodoListApp} />
+      <Route 
+        exact path='/' 
+        component={App} 
+      />
+      <Route 
+        exact path='/list/:listId' 
+        component={App}
+        isListsRendered={true} 
+      />
     </Provider>
   </BrowserRouter>,
   document.getElementById('root')
