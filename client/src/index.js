@@ -7,7 +7,6 @@ import store from './middleware/store/index';
 import './static/style/style.css';
 
 import App from './components/app/App';
-import TodoListApp from './components/TodoListApp';
 
 ReactDOM.render(
   <BrowserRouter>
