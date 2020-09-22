@@ -9,7 +9,7 @@ const SubmitForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(term === '') return;
-    props.addItem(term);
+    props.addItem(term, props.listId);
     setTerm('');
   }
 

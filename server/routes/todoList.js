@@ -39,7 +39,7 @@ router.get('/todolist/:id', async (req, res) => {
 router.get('/todolist', async (req, res) => {
     try {
         const todolists = await TodoList.find({}).exec();
-        res.send({ todolists });
+        res.send(todolists);
     } catch(err) {
         console.log(err);
         res.status(500).send({ err: JSON.stringify(err) });

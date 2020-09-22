@@ -1,16 +1,18 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
-import TodoList from './TodoList';
+import TodoList from './items/TodoList';
 import SubmitForm from './SubmitForm';
 
-const App = () => {
+const TodoListApp = () => {
+    let { listId } = useParams();
     return (
         <div className='container'>
             <div className="row">
                 <div className="col-md-6">
                     <div className='todolist'>
-                        <SubmitForm />
-                        <TodoList />
+                        <SubmitForm listId={listId} />
+                        <TodoList listId={listId} />
                     </div>
                 </div>
             </div>
@@ -18,4 +20,4 @@ const App = () => {
     )
 }
 
-export default App;
+export default TodoListApp;

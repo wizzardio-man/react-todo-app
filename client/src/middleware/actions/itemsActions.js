@@ -1,9 +1,6 @@
-import { 
-    getServerItems, 
-    deleteServerItem,
-    doneServerItem,
-    addServerItem
-} from '../server/server';
+import Items from '../server/items';
+
+const items = new Items();
 
 export const GET_ITEMS = 'GET_ITEMS';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
@@ -19,10 +16,10 @@ export const getItemsSuccess = items => ({
 
 export const getItemsFailure = () => ({ type: GET_ITEMS_FAILURE });
 
-export function fetchItems() {
+export function fetchItems(listId) {
     return function action(dispatch) {
         dispatch(getItems());
-        getServerItems()
+        items.fetchObjects(listId)
             .then(
                 response => dispatch(getItemsSuccess(response)),
                 err => dispatch(getItemsFailure())
@@ -32,7 +29,7 @@ export function fetchItems() {
 
 export function deleteItem(id) {
     return function action(dispatch) {
-        deleteServerItem(id)
+        items.deleteObject(id)
             .then(() => {
                 fetchItems()(dispatch);
             });
@@ -41,18 +38,18 @@ export function deleteItem(id) {
 
 export function doneItem(id) {
     return function action(dispatch) {
-        doneServerItem(id)
+        items.doneServerItem(id)
             .then(() => {
                 fetchItems()(dispatch);
             });
     }
 }
 
-export function addItem(task) {
+export function addItem(task, listId) {
     return function action(dispatch) {
-        addServerItem(task)
+        items.addNewServerItem(task, listId)
             .then(() => {
-                fetchItems()(dispatch);
+                fetchItems(listId)(dispatch);
             });
     }
 }

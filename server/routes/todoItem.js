@@ -11,6 +11,7 @@ const { TodoItem, TodoList } = models;
 
 router.post('/todoitem', async (req, res) => {
     const { title, listId, isDone, isDeleted } = req.body;
+    console.log(listId)
     const _id = new mongoose.Types.ObjectId().toHexString();
     const newTodoItem = new TodoItem({
         title,
@@ -29,9 +30,10 @@ router.post('/todoitem', async (req, res) => {
     }
 });
 
-router.get('/todoitem', async (req, res) => {
+router.get('/todoitem/:listId', async (req, res) => {
     try {
-        const todoItems = await TodoItem.find({}).exec();
+        const { listId } = req.params;
+        const todoItems = await TodoItem.find({ todoList: listId }).exec();
         res.send(todoItems);
     } catch(err) {
         res.status(500).send({ err: JSON.stringify(err) });
