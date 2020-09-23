@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { deleteItem, doneItem } from '../middleware/actions/itemsActions';
+import Delete from './common/actions/Delete';
 
 const Todo = (props) => {
     return (
@@ -14,11 +15,7 @@ const Todo = (props) => {
               )}
                <p className={(props.content.isDone && 'completed')}>{props.content.title}</p>
               </label>
-            <button 
-              className='remove-item btn btn-default btn-xs right'
-              onClick={() => {props.deleteItem(props.id)}}>
-                <span className='glyphicon glyphicon-remove'></span>
-            </button>
+            <Delete id={props.id} type='item' />
           </label>
         </div>
       </li>
