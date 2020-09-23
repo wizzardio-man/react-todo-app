@@ -30,8 +30,8 @@ export function fetchItems(listId) {
 export function deleteItem(id) {
     return function action(dispatch) {
         items.deleteObject(id)
-            .then(() => {
-                fetchItems()(dispatch);
+            .then((response) => {
+                fetchItems(response.data.listId)(dispatch);
             });
     }
 }
@@ -39,8 +39,8 @@ export function deleteItem(id) {
 export function doneItem(id) {
     return function action(dispatch) {
         items.doneServerItem(id)
-            .then(() => {
-                fetchItems()(dispatch);
+            .then((response) => {
+                fetchItems(response.data.listId)(dispatch);
             });
     }
 }

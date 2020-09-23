@@ -45,8 +45,8 @@ router.get('/todoitem/:listId', async (req, res) => {
 router.delete('/todoitem/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        await TodoItem.findByIdAndDelete(id);
-        res.send({ msg: `Todo Item with an id ${id} was deleted` });
+        const result = await TodoItem.findByIdAndDelete(id);
+        res.send({ id, listId: result.todoList });
     } catch (err) {
         res.status(500).send({ err: JSON.stringify(err) });
     }
@@ -56,8 +56,8 @@ router.put('/todoitem/:id', async (req, res) => {
     const { id } = req.params;
     const params = req.body;
     try {
-        await TodoItem.findOneAndUpdate({ _id: id}, params);
-        res.send({ msg: `Todo Item with an id ${id} was updated by new options ${JSON.stringify(params)}` });
+        const result = await TodoItem.findOneAndUpdate({ _id: id}, params);
+        res.send({ id, listId: result.todoList });
     } catch (err) {
         res.status(500).send({ err: JSON.stringify(err) });
     }

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 
 import { fetchItems } from '../../middleware/actions/itemsActions';
-import Header from '../common/Header';
 
+import Header from '../common/Header';
 import IterableObject from '../common/IterableObject'
 
 const Items = ({ fetchItems, loading, items, hasErrors, listId }) => {
