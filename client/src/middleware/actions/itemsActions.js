@@ -17,7 +17,6 @@ export const getItemsSuccess = items => ({
 export const getItemsFailure = () => ({ type: GET_ITEMS_FAILURE });
 
 export function fetchItems(listId) {
-    console.log(`Here i am ${listId}`)
     return function action(dispatch) {
         dispatch(getItems());
         items.fetchObjects(listId)

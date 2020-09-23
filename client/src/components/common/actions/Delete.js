@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { deleteItem } from '../../../middleware/actions/itemsActions';
 import { deleteLIst } from '../../../middleware/actions/listsActions';
 
-const Delete = ({ deleteItem, deleteLIst, id, type }) => {
+const Delete = ({ deleteItem, deleteLIst, id }) => {
     const { listId } = useParams();
     const deleteObject = () => {
         if ( listId ) {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchItems } from '../../middleware/actions/itemsActions';
 import Header from '../common/Header';
 
-import Todo from '../Todo';
+import IterableObject from '../common/IterableObject'
 
 const Items = ({ fetchItems, loading, items, hasErrors, listId }) => {
     useEffect(() => {
@@ -16,7 +16,7 @@ const Items = ({ fetchItems, loading, items, hasErrors, listId }) => {
       if (hasErrors) return <p>Unable to display items...</p>
       if (items) {
         const todos = items.map((todo, index) => {
-          return <Todo 
+          return <IterableObject 
               content={todo}
               key={index}
               id={todo._id}
