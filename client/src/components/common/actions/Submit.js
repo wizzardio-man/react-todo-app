@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { addItem } from '../../middleware/actions/itemsActions';
-import { addList } from '../../middleware/actions/listsActions';
+import { addItem } from '../../../middleware/actions/itemsActions';
+import { addList } from '../../../middleware/actions/listsActions';
 
-const SubmitForm = ({ addItem, addList }) => {
+const Submit = ({ addItem, addList }) => {
     const [ term, setTerm ] = useState('');
     const { listId } = useParams();
 
@@ -42,4 +42,4 @@ const mapDispatchToProps = {
     addList
 };
 
-export default connect(null, mapDispatchToProps)(SubmitForm);
+export default connect(null, mapDispatchToProps)(Submit);

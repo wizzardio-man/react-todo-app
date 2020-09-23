@@ -15,7 +15,7 @@ const Todo = (props) => {
               )}
                <p className={(props.content.isDone && 'completed')}>{props.content.title}</p>
               </label>
-            <Delete id={props.id} type='item' />
+            <Delete id={props.id} />
           </label>
         </div>
       </li>

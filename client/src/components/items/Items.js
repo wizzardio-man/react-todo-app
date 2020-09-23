@@ -6,7 +6,7 @@ import Header from '../common/Header';
 
 import Todo from '../Todo';
 
-const TodoList = ({ fetchItems, loading, items, hasErrors, listId }) => {
+const Items = ({ fetchItems, loading, items, hasErrors, listId }) => {
     useEffect(() => {
       fetchItems(listId)
     }, []);
@@ -51,4 +51,4 @@ const mapDispatchToProps = {
   fetchItems
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(Items);

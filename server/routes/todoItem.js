@@ -23,6 +23,7 @@ router.post('/todoitem', async (req, res) => {
 
     try {
         await newTodoItem.save();
+        console.log(`I was saved ${listId}`)
         res.send({ msg: `Created new item with a title ${title} for the list ${listId}` });
     } catch (err) {
         console.log(err);
@@ -34,6 +35,7 @@ router.get('/todoitem/:listId', async (req, res) => {
     try {
         const { listId } = req.params;
         const todoItems = await TodoItem.find({ todoList: listId }).exec();
+        console.log(todoItems)
         res.send(todoItems);
     } catch(err) {
         res.status(500).send({ err: JSON.stringify(err) });

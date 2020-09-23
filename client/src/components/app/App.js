@@ -2,9 +2,9 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import Lists from '../lists/Lists';
-import TodoList from '../items/TodoList';
+import Items from '../items/Items';
 
-import SubmitForm from '../common/SubmitForm';
+import Submit from '../common/actions/Submit';
 
 const App = () => {
     const { listId } = useParams();
@@ -13,8 +13,8 @@ const App = () => {
             <div className="row">
                 <div className="col-md-6">
                     <div className='todolist'>
-                        <SubmitForm />
-                        { listId ? <TodoList listId={listId} /> : <Lists />}
+                        <Submit />
+                        { listId ? <Items listId={listId} /> : <Lists />}
                     </div>
                 </div>
             </div>
